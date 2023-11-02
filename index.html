@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/tailwindcss@2.2.4/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>Your To-Do App</title>
+  </head>
+  <body>
+    <header class="px-5 py-4 mx-auto max-w-lg">
+      <h1
+        class="lg:text-4xl md:text-4xl text-xl text-slate-700 font-medium ml-[50%]"
+      >
+        Hello buddy, good morning!
+      </h1>
+    </header>
+    <main
+      class="px-5 mt-10 max-w-lg mx-auto border-l border-b border-r border-slate-400 rounded-md"
+    >
+      <form action="#" class="flex flex-col items-center sm:flex-row gap-2">
+        <input
+          type="text"
+          placeholder="What's gonna be for today"
+          class="p-2 rounded-lg border border-slate-200 w-full"
+          id="todo_input"
+        />
+        <button
+          class="bg-green-500 rounded-lg px-4 sm:px-2.5 py-3 text-sm text-white w-[100px] whitespace-nowrap hover:bg-green-600"
+          onclick="_create_todo_()"
+          type="button"
+          id="add_task_btn"
+        >
+          Add Task
+        </button>
+        <button
+          class="hidden bg-yellow-500 rounded-lg px-4 sm:px-2.5 py-3 text-sm text-white w-[100px] whitespace-nowrap hover:bg-yellow-600 border border-slate-400"
+          onclick="_update_todo_()"
+          type="button"
+          id="update_task_btn"
+        >
+          Update Task
+        </button>
+      </form>
+
+      <p class="hidden" id="form_message"></p>
+
+      <section class="mt-5" id="todo_list_container"></section>
+    </main>
+
+    <script src="./index.js"></script>
+  </body>
+</html>
