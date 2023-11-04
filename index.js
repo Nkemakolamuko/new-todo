@@ -131,8 +131,22 @@ const _handle_edit_mode_ = (id) => {
   _add_task_btn.classList.add("hidden");
 };
 
+// Remove Cancel Edit
+const removeCancelEdit = () => {
+  const _cancelEdit_btn = document.getElementById("cancelEdit");
+  _cancelEdit_btn.classList.add("hidden");
+};
+
+// Cancel Edit
 _cancelEdit_btn.addEventListener("click", function () {
-  window.location.reload(false);
+  todo_input.value = "";
+  const _update_task_btn = document.getElementById("update_task_btn");
+  _update_task_btn.classList.add("hidden");
+
+  const _add_task_btn = document.getElementById("add_task_btn");
+  _add_task_btn.classList.remove("hidden");
+
+  removeCancelEdit();
 });
 
 const _update_todo_ = () => {
