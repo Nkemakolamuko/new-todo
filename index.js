@@ -132,7 +132,7 @@ const _handle_edit_mode_ = (id) => {
 };
 
 _cancelEdit_btn.addEventListener("click", function () {
-  window.location.reload(true);
+  window.location.reload(false);
 });
 
 const _update_todo_ = () => {
