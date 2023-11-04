@@ -9,6 +9,15 @@
     />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Your To-Do App</title>
+    <style>
+      .close-icon-visible {
+        display: block;
+      }
+
+      .close-icon-hidden {
+        display: none;
+      }
+    </style>
   </head>
   <body>
     <header class="px-5 py-4 mx-auto max-w-lg">
@@ -44,6 +53,25 @@
         >
           Update Task
         </button>
+        <button
+          id="cancelEdit"
+          class="cursor-pointer text-red-500 border-2 p-2 bg-gray-300 rounded-full"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
       </form>
 
       <p class="hidden" id="form_message"></p>
@@ -52,5 +80,6 @@
     </main>
 
     <script src="./index.js"></script>
+    <script src="./utility.js"></script>
   </body>
 </html>

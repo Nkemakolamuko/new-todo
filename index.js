@@ -1,35 +1,19 @@
 //MY TASK CRUD FUNCTIONS
 
 //CREATE TASK FUNCTION
-function broofa() {
-  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
-    var r = (Math.random() * 16) | 0,
-      v = c == "x" ? r : (r & 0x3) | 0x8;
-    return v.toString(16);
-  });
-}
-
+const todo_input = document.querySelector("#todo_input");
 const DB_NAME = "todo_db";
 
-const _create_todo_ = () => {
-  const todo_input = document.querySelector("#todo_input");
-  // if (todo_input.value.length > 20) {
+const _cancelEdit_btn = document.getElementById("cancelEdit");
+_cancelEdit_btn.classList.add("hidden");
 
-  //   return;
-  // }
+const _create_todo_ = () => {
+  if (todo_input.value.length > 30) {
+    charLong();
+    return;
+  }
   if (!todo_input.value) {
-    const _form_message_span_ = document.getElementById("form_message");
-    _form_message_span_.innerHTML = "Hey Yo!! Cannot add empty Task";
-    _form_message_span_.classList.remove("hidden");
-    _form_message_span_.classList.add(
-      "text-center",
-      "justify-center",
-      "text-red-400",
-      "mt-10"
-    );
-    setTimeout(() => {
-      _form_message_span_.classList.add("hidden");
-    }, 3000);
+    showMessage("Hey yo!! Can't add empty Task, can you?");
     return;
   }
 
@@ -140,31 +124,26 @@ const _handle_edit_mode_ = (id) => {
   _update_task_btn.classList.remove("hidden");
   _update_task_btn.setAttribute("_todo_id_to_update", id);
 
+  const _cancelEdit_btn = document.getElementById("cancelEdit");
+  _cancelEdit_btn.classList.remove("hidden");
+
   const _add_task_btn = document.getElementById("add_task_btn");
   _add_task_btn.classList.add("hidden");
 };
 
+_cancelEdit_btn.addEventListener("click", function () {
+  window.location.reload(true);
+});
+
 const _update_todo_ = () => {
-  const todo_input = document.querySelector("#todo_input");
   if (!todo_input.value) {
-    const _form_message_span_ = document.getElementById("form_message");
-    _form_message_span_.innerHTML = "Hey Yo!! Cannot update empty Task";
-    _form_message_span_.classList.remove("hidden");
-    _form_message_span_.classList.add(
-      "text-center",
-      "justify-center",
-      "text-red-400",
-      "mt-10"
-    );
-    setTimeout(() => {
-      _form_message_span_.classList.add("hidden");
-    }, 3000);
+    showMessage("Yo!! Can't update empty Task, can you?");
     return;
   }
   const _update_task_btn = document.getElementById("update_task_btn");
   const _todo_id_to_update_ =
     _update_task_btn.getAttribute("_todo_id_to_update");
-  // console.log(_todo_id_to_update);
+
   // // get todo
   const todo_db = JSON.parse(localStorage.getItem(DB_NAME)) || [];
   const _updated_todo_db_ = todo_db.map((todo) => {
@@ -180,6 +159,7 @@ const _update_todo_ = () => {
   todo_input.value = "";
 
   _update_task_btn.classList.add("hidden");
+  cancelUpdate.classList.add("hidden");
   const _add_task_btn = document.getElementById("add_task_btn");
   _add_task_btn.classList.remove("hidden");
 };
