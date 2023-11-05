@@ -51,7 +51,7 @@ const fetchTodos = () => {
       return `<div
     class="flex justify-between py-3 px-2.5 rounded-lg hover:bg-gray-100 hover:text-black mb-4"
   >
-    <button onclick="handlePreviewTodo('${todo.id}')" class="font-medium truncate underline underline-offset-1" >${todo.title}</button>
+    <button onclick="handlePreviewTodo('${todo.id}')" class="font-medium truncate underline underline-offset-1" id="handlePreviewTodo">${todo.title}</button>
     <section class="flex gap-3">
       <button class="border rounded-full p-1" onclick="_handle_edit_mode_('${todo.id}')">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">

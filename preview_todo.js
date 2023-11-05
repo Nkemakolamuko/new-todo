@@ -36,6 +36,7 @@ const renderCurrentPreviewTodoId = () => {
   </div>
 </section>
 <section class="mt-3">
+  <span class="text-sm">Created by</span>
   <span class="text-sm">${created_at}</span>
   <span class="mx-1">&map;</span>
   <span class="bg-yellow-500 text-sm px-1 py-0.5 rounded-lg text-white"
@@ -45,5 +46,22 @@ const renderCurrentPreviewTodoId = () => {
   
   `;
 };
+
+// Edit
+async function _handle_edit_mode_() {
+  //   const todo_db = getDb("todo_db");
+  const { value: text } = await Swal.fire({
+    input: "textarea",
+    inputLabel: "Message",
+    inputPlaceholder: "Type your message here...",
+    inputAttributes: {
+      "aria-label": "Type your message here",
+    },
+    showCancelButton: true,
+  });
+  if (text) {
+    Swal.fire(text);
+  }
+}
 
 renderCurrentPreviewTodoId();

@@ -69,3 +69,11 @@ const handlePreviewTodo = (id) => {
   setDb("current_preview_todo_id", id);
   window.location.href = "/preview_todo.html";
 };
+
+// const handlePreviewTodo = document.getElementById("handlePreviewTodo");
+// handlePreviewTodo.addEventListener("click", (title, id) => {
+//   setDb("current_preview_todo_title", title);
+
+//   setDb("current_preview_todo_id", id);
+//   window.location.href = "/preview_todo.html";
+// });
