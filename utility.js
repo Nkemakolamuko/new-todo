@@ -9,7 +9,7 @@ function broofa() {
 const charLong = () => {
   let timerInterval;
   Swal.fire({
-    title: "Task is too long. Consider breaking down!",
+    title: "Task is too long. Consider it breaking down!",
     html: "This will close in <b></b> milliseconds.",
     timer: 4000,
     didOpen: () => {
@@ -43,4 +43,29 @@ const showMessage = (title) => {
   setTimeout(() => {
     _form_message_span_.classList.add("hidden");
   }, 3000);
+};
+
+// Get local storage
+const getDb = (DB_NAME) => {
+  if (!DB_NAME) {
+    throw new Error("DB_NAME is missing...");
+  }
+  return JSON.parse(localStorage.getItem(DB_NAME)) || [];
+};
+
+const setDb = (DB_NAME, newData) => {
+  if (!DB_NAME) {
+    throw new Error("DB_NAME is missing...");
+  }
+
+  if (!newData) {
+    throw new Error("Data is missing...");
+  }
+  localStorage.setItem(DB_NAME, JSON.stringify(newData));
+};
+
+// todo preview
+const handlePreviewTodo = (id) => {
+  setDb("current_preview_todo_id", id);
+  window.location.href = "/preview_todo.html";
 };

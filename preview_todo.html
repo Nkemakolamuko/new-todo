@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/tailwindcss@2.2.4/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>Preview Todo</title>
+  </head>
+  <body>
+    <header
+      class="px-5 py-4 mx-auto max-w-lg flex items-center justify-between"
+    >
+      <h1
+        class="lg:text-3xl md:text-3xl text-xl text-slate-700 font-medium ml-[50%]"
+      >
+        Task Details!
+      </h1>
+      <a
+        href="/index.html"
+        class="border inline-flex flex items-center gap-2 text-gray-500 hover:text-blue-800 rounded-lg px-2"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-5 h-5"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18"
+          />
+        </svg>
+
+        <span class="text-sm">Back to all Task</span>
+      </a>
+    </header>
+
+    <main
+      class="px-5 mt-10 pb-3 max-w-lg mx-auto border-l border-b border-r border-slate-400 rounded-md"
+    >
+      <section id="todo_preview_container"></section>
+    </main>
+
+    <script src="/utility.js"></script>
+    <script src="/preview_todo.js"></script>
+  </body>
+</html>
