@@ -120,7 +120,7 @@ const _handle_edit_mode_ = (id) => {
   todo_input.value = _todo_to_update_.title;
 
   // Add autofocus attribute to focus on the input field
-  todo_input.setAttribute("autofocus", "true");
+  todo_input.setAttribute("autofocus", true);
 
   const _update_task_btn = document.getElementById("update_task_btn");
   _update_task_btn.classList.remove("hidden");
