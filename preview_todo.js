@@ -91,7 +91,7 @@ class="cursor-pointer text-red-500 border-2 p-2 bg-gray-300 rounded-full" onclic
   //   editDescriptionSectionid.innerHTML = JSON.parse(
   //     localStorage.getItem("description")
   editDescriptionSectionid.innerHTML =
-    description || "Your preview will appear here";
+    description || "Click Edit Icon to enter description";
 };
 
 // Edit
