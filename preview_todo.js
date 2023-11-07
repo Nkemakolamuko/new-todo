@@ -4,7 +4,7 @@ const renderCurrentPreviewTodoId = () => {
   const todo_db = getDb("todo_db");
   const currentPreviewId = getDb("current_preview_todo_id");
   const currentTodo = todo_db.find((todo) => todo.id === currentPreviewId);
-  const { title, id, created_at } = currentTodo;
+  const { title, id, created_at, description } = currentTodo;
 
   const todo_preview_container = document.getElementById(
     "todo_preview_container"
@@ -56,7 +56,7 @@ Update Task
 </button>
 <button
 id="cancelEdit"
-class="cursor-pointer text-red-500 border-2 p-2 bg-gray-300 rounded-full"
+class="cursor-pointer text-red-500 border-2 p-2 bg-gray-300 rounded-full" onclick="_cancelEdit_()"
 >
 <svg
   xmlns="http://www.w3.org/2000/svg"
@@ -87,9 +87,11 @@ class="cursor-pointer text-red-500 border-2 p-2 bg-gray-300 rounded-full"
 </section>
   
   `;
-  editDescriptionSectionid.innerHTML = JSON.parse(
-    localStorage.getItem("description")
-  );
+  let editDescriptionSectionid = document.getElementById("editDescription");
+  //   editDescriptionSectionid.innerHTML = JSON.parse(
+  //     localStorage.getItem("description")
+  editDescriptionSectionid.innerHTML =
+    description || "Your preview will appear here";
 };
 
 // Edit
@@ -97,7 +99,7 @@ function _handle_edit_mode_() {
   const todo_db = getDb("todo_db");
   const currentPreviewId = getDb("current_preview_todo_id");
   const currentTodo = todo_db.find((todo) => todo.id === currentPreviewId);
-  let { title, id, created_at } = currentTodo;
+  let { title, id, created_at, description } = currentTodo;
   console.log(title);
   let newTodoPreviewSection = document.getElementById("newTodoPreviewSection");
   newTodoPreviewSection.classList.remove("hidden");
@@ -105,8 +107,18 @@ function _handle_edit_mode_() {
   const _update_task_btn = document.getElementById("update_task_btn");
   _update_task_btn.setAttribute("_todo_id_to_update", id);
 
+  let newTodoPreviewDes = document.getElementById("newTodoPreviewDes");
+  newTodoPreviewDes.value = JSON.parse(localStorage.getItem("description"));
+
   let newTodoPreviewInput = document.getElementById("newTodoPreview");
   newTodoPreviewInput.value = title;
+}
+
+const _cancelEdit_btn = document.getElementById("cancelEdit");
+
+function _cancelEdit_() {
+  let newTodoPreviewSection = document.getElementById("newTodoPreviewSection");
+  newTodoPreviewSection.classList.add("hidden");
 }
 
 const _update_todo_ = () => {
@@ -131,7 +143,11 @@ const _update_todo_ = () => {
   const todo_db = JSON.parse(localStorage.getItem(DB_NAME)) || [];
   const _updated_todo_db_ = todo_db.map((todo) => {
     if (todo.id === _todo_id_to_update_) {
-      return { ...todo, title: newTodoPreviewInput.value };
+      return {
+        ...todo,
+        title: newTodoPreviewInput.value,
+        description: newTodoPreviewInputDes,
+      };
     } else {
       return todo;
     }

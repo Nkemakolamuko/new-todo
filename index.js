@@ -20,8 +20,11 @@ const _create_todo_ = () => {
   const _new_todo_ = {
     id: broofa(),
     title: todo_input.value,
+    description: "",
     created_at: new Date().toLocaleDateString(),
   };
+
+  console.log(_new_todo_);
 
   let _todo_db_ = JSON.parse(localStorage.getItem(DB_NAME)) || []; // Default values... check to get, or get empty Array
 
