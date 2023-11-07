@@ -87,6 +87,9 @@ class="cursor-pointer text-red-500 border-2 p-2 bg-gray-300 rounded-full"
 </section>
   
   `;
+  editDescriptionSectionid.innerHTML = JSON.parse(
+    localStorage.getItem("description")
+  );
 };
 
 // Edit
@@ -135,11 +138,9 @@ const _update_todo_ = () => {
   });
 
   setDb(DB_NAME, _updated_todo_db_);
-  window.location.reload();
+  //   window.location.reload();
+  renderCurrentPreviewTodoId();
 
-  editDescriptionSectionid.innerHTML = JSON.parse(
-    localStorage.getItem("description")
-  );
   let newTodoPreviewSection = document.getElementById("newTodoPreviewSection");
   newTodoPreviewSection.classList.add("hidden");
 };
