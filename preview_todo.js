@@ -12,11 +12,14 @@ const renderCurrentPreviewTodoId = () => {
   todo_preview_container.innerHTML = `
     
   <section class="flex justify-between">
-  <h3 class="text-xl font-semibold">${title}</h3>
+  <section class="flex items-center gap-2">
+  <input type="checkbox" class="cursor-pointer" id="checkBox" onclick="checkBox()" />
+  <h3 class="text-xl font-semibold" id="titleHead">${title}</h3>
+  </section>
   <div class="flex items-center">
     <button
       class="border rounded-full p-1 hover:border-2 hover:border-yellow-500"
-      onclick="_handle_edit_mode_()"
+      onclick="_handle_edit_mode_()" id="editIcon"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -24,7 +27,7 @@ const renderCurrentPreviewTodoId = () => {
         viewBox="0 0 24 24"
         stroke-width="1.5"
         stroke="currentColor"
-        class="w-5 h-5"
+        class="w-4 h-4"
       >
         <path
           stroke-linecap="round"
@@ -78,11 +81,11 @@ class="cursor-pointer text-red-500 border-2 p-2 bg-gray-300 rounded-full" onclic
 
 </section>
 <section class="mt-4">
-  <span class="text-sm">Created by</span>
+  <span class="text-sm">Created at</span>
   <span class="text-sm">${created_at}</span>
   <span class="mx-1">&map;</span>
-  <span class="bg-gray-500 text-sm px-1 py-0.5 rounded-lg text-white"
-    >Pending</span
+  <span class="bg-gray-500 text-sm px-1 py-1 rounded-full text-white" id="currentState"
+    >pending</span
   >
 </section>
   
@@ -93,6 +96,25 @@ class="cursor-pointer text-red-500 border-2 p-2 bg-gray-300 rounded-full" onclic
   editDescriptionSectionid.innerHTML =
     description || "Click Edit Icon to enter description";
 };
+
+// Checkbox
+function checkBox() {
+  const checkBox = document.getElementById("checkBox");
+  const currentState = document.getElementById("currentState");
+  const titleHead = document.getElementById("titleHead");
+  const editIcon = document.getElementById("editIcon");
+  if (checkBox.checked) {
+    currentState.textContent = "completed";
+    currentState.classList.add("bg-green-500");
+    titleHead.classList.add("line-through", "text-gray-600");
+    editIcon.classList.add("hidden");
+  } else {
+    currentState.textContent = "pending";
+    currentState.classList.remove("bg-green-500");
+    titleHead.classList.remove("line-through", "text-gray-600");
+    editIcon.classList.remove("hidden");
+  }
+}
 
 // Edit
 function _handle_edit_mode_() {

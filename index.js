@@ -1,5 +1,19 @@
 //MY TASK CRUD FUNCTIONS
 
+// Greet User
+
+const now = new Date();
+// Get the current hour of the day (0-23)
+const currentHour = now.getHours();
+if (currentHour <= 12) {
+  const greetUser = document.getElementById("greetUser");
+  greetUser.textContent = `Hello buddy, good morning`;
+} else if (currentHour >= 16) {
+  greetUser.textContent`Hello buddy, good afternoon`;
+} else {
+  greetUser.textContent = `Good evening buddy`;
+}
+
 //CREATE TASK FUNCTION
 const todo_input = document.querySelector("#todo_input");
 const DB_NAME = "todo_db";
